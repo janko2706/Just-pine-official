@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+.demo {
+  --stripe-step: 0.8vmax;
+  --stripe-offset: calc(var(--stripe-step) * 0.4);
+
+  position: relative;
+  width: 100%;
+  height: 1em;
+  font-family: "Fredoka One", cursive;
+  line-height: 1;
+  letter-spacing: 15px;
+  text-align: center;
+
+  @keyframes moveGlass {
+    from {
+      mask-size: 120% 120%;
+    }
+    to {
+      mask-size: 90% 90%;
+    }
+  }
+
+  &__text,
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 99%;
+    mask-image: repeating-linear-gradient(
+      -45deg,
+      black 0,
+      black var(--stripe-step),
+      transparent 0,
+      transparent calc(var(--stripe-step) * 2)
+    );
+    mask-position: 0 0;
+    animation: moveGlass 3s infinite ease alternate;
+  }
+
+  &__text {
+    left: 0;
+    top: 0;
+    color: darkturquoise;
+  }
+
+  &::before {
+    content: attr(data-text);
+  }
+
+  &::before {
+    left: var(--stripe-offset);
+    bottom: var(--stripe-offset);
+    mask-position: var(--stripe-offset) var(--stripe-offset);
+    color: aquamarine;
+  }
+}
+
+BODY {
+  background: #000;
+  min-height: 100vh;
+  font-size: 8rem;
+}
