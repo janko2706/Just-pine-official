@@ -6,7 +6,6 @@ import {
   type IParallax,
 } from "@react-spring/parallax";
 import Navigation from "~/Components/Navigation/Navigation";
-import Doodles from "~/Components/Doodles/Doodles";
 
 // Little helpers ...
 const url = (name: string, wrap = false) =>
@@ -195,7 +194,7 @@ export default function Home() {
           }}
         >
           <div>
-            <div className="demo" data-text="Welcome">
+            <div className="demo border border-red-500" data-text="Welcome">
               <div className="demo__text">Welcome</div>
             </div>
             <h1 className="py-8 text-center text-3xl text-white">
@@ -203,9 +202,6 @@ export default function Home() {
             </h1>
             <div className="demo mb-20" data-text="Software">
               <div className="demo__text">Software</div>
-            </div>
-            <div className="flex justify-center">
-              <Doodles />
             </div>
           </div>
         </ParallaxLayer>
