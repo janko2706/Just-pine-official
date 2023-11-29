@@ -36,7 +36,7 @@
       transparent calc(var(--stripe-step) * 2)
     );
     mask-position: 0 0;
-    animation: moveGlass 3s infinite ease alternate;
+    animation: moveGlass 4s infinite ease alternate;
   }
 
   &__text {

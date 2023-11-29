@@ -6,6 +6,7 @@ import {
   type IParallax,
 } from "@react-spring/parallax";
 import Navigation from "~/Components/Navigation/Navigation";
+import CodeWindow from "~/Components/CodeWindow/CodeWindow";
 
 // Little helpers ...
 const url = (name: string, wrap = false) =>
@@ -193,8 +194,8 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <div>
-            <div className="demo border border-red-500" data-text="Welcome">
+          <div className="w-full">
+            <div className="demo" data-text="Welcome">
               <div className="demo__text">Welcome</div>
             </div>
             <h1 className="py-8 text-center text-3xl text-white">
@@ -216,13 +217,14 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <Image
+          {/* <Image
             width={100}
             height={100}
             alt=""
             src={url("bash")}
             style={{ width: "40%" }}
-          />
+          /> */}
+          <CodeWindow />
         </ParallaxLayer>
 
         <ParallaxLayer

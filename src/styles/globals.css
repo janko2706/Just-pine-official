@@ -2,15 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* font-family: "Libre Baskerville", serif;
+font-family: "Poiret One", sans-serif;
+font-family: "PT Sans", sans-serif; */
+
 html,
 body,
 #root {
   height: 100%;
   width: 100%;
+  font-family: "PT Sans", sans-serif;
 }
 
 body {
-  font-family: system-ui;
   margin: 0;
 }
 
@@ -18,4 +22,47 @@ body {
 *:after,
 *:before {
   box-sizing: border-box;
+}
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: 0.1em; /* Adjust as needed */
+  animation:
+    typing 10s steps(40, end) infinite alternate,
+    blink-caret 0.75s step-end infinite;
+}
+.typewriter p {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation:
+    typing 15s steps(40, end) infinite alternate,
+    blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
