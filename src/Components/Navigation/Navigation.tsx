@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import FullLogoImage from "~/Assets/WithName.png";
-import Image from "next/image";
 import type { IParallax } from "@react-spring/parallax";
-import Link from "next/link";
-import { TiTimes } from "react-icons/ti";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import NavBarItems from "./NavBarItems";
 
 type Props = {
   parallax: React.MutableRefObject<IParallax>;
@@ -12,92 +10,77 @@ type Props = {
 
 const Navigation = ({ parallax }: Props) => {
   const navButtons = [
-    { name: "About us", onClick: () => parallax.current.scrollTo(0) },
-    { name: "Services", onClick: () => parallax.current.scrollTo(1) },
-    { name: "Contact", onClick: () => parallax.current.scrollTo(2) },
+    {
+      name: "About us",
+      onClick: () => clickNavItem(1),
+      afterBg: "after:bg-white",
+      navigateTo: "#aboutUs",
+    },
+    {
+      name: "Services",
+      onClick: () => clickNavItem(2),
+      afterBg: "after:bg-black",
+      navigateTo: "#services",
+    },
+    {
+      name: "Contact",
+      onClick: () => clickNavItem(4),
+      afterBg: "after:bg-green-800",
+      navigateTo: "#contact",
+    },
   ];
-  // return (
-  //   <div className="fixed left-0 top-0 z-50 flex h-fit w-full items-center justify-center bg-white mix-blend-difference">
-  //     <a
-  //       className="cursor-pointer bg-white mix-blend-difference lg:mr-28 lg:px-10"
-  //       onClick={() => parallax.current.scrollTo(0)}
-  //     >
-  //       <Image
-  //         height={100}
-  //         width={150}
-  //         src={FullLogoImage}
-  //         className="h-f w-full"
-  //         alt="Just-Pine logo"
-  //       />
-  //     </a>
-  //     <ul className="flex lg:ml-28 lg:gap-20">
-  //       {navButtons.map((item, index) => {
-  //         return (
-  //           <li
-  //             key={index}
-  //             className="rounded-md p-1 text-sm transition-all duration-300 hover:bg-black hover:text-white lg:p-2 lg:text-lg"
-  //           >
-  //             <button onClick={item.onClick} type="button">
-  //               {item.name}
-  //             </button>
-  //           </li>
-  //         );
-  //       })}
-  //     </ul>
-  //   </div>
-  // );
-  const [nav, setNav] = useState(false);
+  const [isToggled, setToggle] = useState(false);
+
+  const clickNavItem = (scrollToNumber: number) => {
+    setToggle(false);
+    // parallax.current.scrollTo(scrollToNumber);
+  };
+
+  const navContainer = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: 200,
+      transition: {
+        duration: 0.3,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
-    <div className="nav fixed z-50 flex h-20 w-full items-center justify-between bg-black px-4 text-white">
-      <div>
-        {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
-        <h1 className="font-signature ml-2 text-5xl">
-          <a
-            className="link-underline link-underline-black"
-            href=""
-            target="_blank"
-            rel="noreferrer"
-          >
-            Logo
-          </a>
-        </h1>
-      </div>
-
-      <ul className="hidden md:flex">
-        {navButtons.map((item, idx) => (
-          <li
-            key={idx}
-            className="nav-links link-underline cursor-pointer px-4 text-base font-medium capitalize text-gray-500 duration-200 hover:scale-105 hover:text-white"
-            onClick={item.onClick}
-          >
-            <p>{item.name}</p>
-          </li>
-        ))}
-      </ul>
-
-      <div
-        onClick={() => setNav(!nav)}
-        className="z-10 cursor-pointer pr-4 text-gray-500 md:hidden"
+    <header className="fixed right-0 top-0 z-40 flex justify-end">
+      <button
+        onClick={() => setToggle(!isToggled)}
+        className={`fixed right-10 top-3 z-50 w-fit transition-all duration-300 ease-in-out ${
+          !isToggled ? "rotate-0" : "rotate-90"
+        }`}
       >
-        {nav ? <TiTimes size={30} /> : <FaBars size={30} />}
-      </div>
-
-      {nav && (
-        <ul className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-black to-gray-800 text-gray-500">
-          {links.map(({ id, link }) => (
-            <li
-              key={id}
-              className="cursor-pointer px-4 py-6 text-4xl capitalize"
-            >
-              <Link onClick={() => setNav(!nav)} href={link}>
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+        <FaBars className="h-16 w-16 rounded-xl bg-black bg-opacity-20 p-3 text-white backdrop-blur-2xl" />
+      </button>
+      <AnimatePresence>
+        {isToggled && (
+          <motion.div
+            className="fixed h-full w-full  bg-white bg-opacity-20 backdrop-blur-lg"
+            initial="hidden"
+            animate={isToggled ? "visible" : "hidden"}
+            exit="hidden"
+            variants={navContainer}
+          >
+            <NavBarItems items={navButtons} isToggled={isToggled} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
