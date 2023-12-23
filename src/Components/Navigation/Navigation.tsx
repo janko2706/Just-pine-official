@@ -31,7 +31,7 @@ const Navigation = ({ parallax }: Props) => {
   ];
   const [isToggled, setToggle] = useState(false);
 
-  const clickNavItem = (scrollToNumber: number) => {
+  const clickNavItem = (_scrollToNumber: number) => {
     setToggle(false);
     // parallax.current.scrollTo(scrollToNumber);
   };

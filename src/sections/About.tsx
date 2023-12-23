@@ -19,10 +19,12 @@ const About = () => (
 
       <motion.p
         variants={fadeIn("up", "tween", 0.2, 1)}
-        className="mt-[8px] text-center text-4xl font-thin text-white sm:text-[32px]"
+        className="mt-[8px] text-center text-base font-thin text-white md:text-4xl"
       >
-        <span className="text-4xl font-bold text-white">JUST-PINE.</span> We are
-        commited to delivering innovative{" "}
+        <span className="text-2xl font-bold text-white md:text-4xl">
+          JUST-PINE.
+        </span>{" "}
+        We are commited to delivering innovative{" "}
         <span className="font-bold text-slate-100"> IT solutions </span>
         to businesses of all sizes. We will help you achieve your goals and
         thrive in a rapidly evolving digital landscape.

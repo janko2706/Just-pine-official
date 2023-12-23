@@ -35,12 +35,12 @@ export default function Home() {
             variants={fadeIn("up", "tween", 0, 0.7)}
             className=" absolute -bottom-4 left-0 right-0 mx-auto flex animate-bounce cursor-pointer justify-center text-white"
           >
-            <IoIosArrowRoundDown className="h-32 w-20 font-thin" />
+            <IoIosArrowRoundDown className="h-20 w-10 font-thin lg:h-32 lg:w-20" />
           </motion.div>
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} speed={0.1} style={{ opacity: 1 }}>
-          <section className="relative h-fit" >
+          <section className="relative h-fit">
             <Explore />
           </section>
         </ParallaxLayer>

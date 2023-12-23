@@ -11,7 +11,7 @@ const Footer = () => (
       initial="hidden"
       whileInView="show"
       id="contact"
-      className="flex h-full w-full flex-col items-center justify-center bg-black selection:bg-green-700"
+      className="flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm selection:bg-green-700"
     >
       {" "}
       <h1 className="mb-20 text-center font-Orbitron text-6xl text-white">
@@ -21,8 +21,8 @@ const Footer = () => (
         <div>
           <div>
             <ul className="flex flex-col items-center gap-10">
-              <li className="text-2xl font-thin">
-                <span className="font-semibold">JUST PINE</span>, Obrt za
+              <li className="w-full text-center text-2xl font-thin">
+                <span className=" font-semibold">JUST PINE</span>, Obrt za
                 racunalno programiranje
               </li>
               <li>
