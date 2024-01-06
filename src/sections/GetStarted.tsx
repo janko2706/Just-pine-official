@@ -10,7 +10,7 @@ import { TitleText } from "~/Components/CustomTexts";
 import StartSteps from "~/Components/StartSteps";
 
 const GetStarted = () => (
-  <section className="relative z-10 mx-auto mt-36 block p-10 shadow-2xl backdrop-blur-lg md:mt-60 lg:mt-0">
+  <section className="relative z-10 mx-auto mt-36 flex justify-center p-10 shadow-2xl backdrop-blur-lg md:mt-60 lg:mt-0">
     <motion.div
       variants={staggerContainer(0.25, 0.25)}
       initial="hidden"
