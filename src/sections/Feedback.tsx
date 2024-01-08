@@ -17,7 +17,7 @@ const Feedback = () => {
       >
         <motion.div
           variants={fadeIn("right", "tween", 0.2, 1)}
-          className="relative flex flex-[0.5] flex-col justify-center rounded-[32px] p-4 sm:p-8 lg:max-w-[370px]"
+          className="relative flex flex-[0.5] flex-col justify-center rounded-[32px] p-4 sm:p-8 "
         >
           <div>
             <div className="text-6xl font-bold leading-tight text-white ">

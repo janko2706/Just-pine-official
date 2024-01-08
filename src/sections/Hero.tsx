@@ -6,7 +6,7 @@ import { slideIn, staggerContainer, textVariant } from "../utils/motion";
 import logo from "~/Assets/WithName.png";
 
 const Hero = () => (
-  <section className="mb-10 mt-10 py-4 pl-6 sm:pl-16 lg:mt-44">
+  <section className="lg:mt-38 mb-10 mt-10 py-4 pl-6 sm:pl-16">
     <motion.div
       variants={staggerContainer(0.25, 0.25)}
       initial="hidden"
